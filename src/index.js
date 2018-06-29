@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
@@ -66,7 +67,7 @@ class Main {
                 console.log(`Main file created!`)
                 resolve(true);
             });
-        })
+        });
     }
 
     widthPercent() {
@@ -80,7 +81,7 @@ class Main {
                 console.log(`Module WidthPercent created!`)
                 resolve(true);
             });
-        })
+        });
     }
 
     widthPixels() {
