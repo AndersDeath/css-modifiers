@@ -188,23 +188,29 @@ function buildCss() {
     });
 }
 
+function help() {
+    console.log('CSSMOD Instruction');
+    console.log('===================');
+    console.log('--release\tbuild sass, css and css minify file');
+    console.log('--build \tbuild only sass file');
+    console.log('--buildCss\tbuild css and css minify files. (work only after ./css --build)');
+    console.log('--size --sass\tshow size of sass files');
+    console.log('--size --css\tshow size of css file');
+    console.log('--size --js\tshow size of cssmod utility');
+    console.log('===================');
+}
+
 if (argv.build === true) {
     new Main(() => {
         console.log('All is done');
     });
-}
-
-if (argv.release === true) {
+} else if (argv.release === true) {
     new Main(() => {
         buildCss();
     });
-}
-
-if (argv.buildCss === true) {
+} else if (argv.buildCss === true) {
     buildCss();
-}
-
-if (argv.size === true && argv.sass === true) {
+} else if (argv.size === true && argv.sass === true) {
     exec('du -h -s sass', (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
@@ -212,9 +218,7 @@ if (argv.size === true && argv.sass === true) {
         }
         console.log(`Sass size: ${stdout}`);
     });
-}
-
-if (argv.size === true && argv.css === true) {
+} else if (argv.size === true && argv.css === true) {
     exec('du -h -s css', (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
@@ -222,14 +226,14 @@ if (argv.size === true && argv.css === true) {
         }
         console.log(`Css size: ${stdout}`);
     });
-}
-
-if (argv.size === true && argv.js === true) {
-    exec('du -hs app.js', (error, stdout, stderr) => {
+} else if (argv.size === true && argv.js === true) {
+    exec('du -hs cssmod', (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
         }
         console.log(`Lib size: ${stdout}`);
     });
+} else {
+    help();
 }
