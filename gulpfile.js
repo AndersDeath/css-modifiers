@@ -7,11 +7,11 @@ const uglify = require('gulp-uglifyjs');
 const chmod = require('gulp-chmod');
 
 gulp.task('build', () => {
-    return gulp.src('./src/**/*.js')
+    return gulp.src(['./src/**/*.header.js','./src/**/*.class.js','./src/**/*.js'])
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(concat('cssmod'))
+        .pipe(concat('cssmod.js'))
         .pipe(uglify())
         .pipe(chmod({
             owner: {
