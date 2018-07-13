@@ -29,7 +29,7 @@ class Main {
                 console.log(`Css size: ${stdout}`);
             });
         } else if (argv.size === true && argv.js === true) {
-            exec('du -hs cssmod', (error, stdout, stderr) => {
+            exec('du -hs cssmod.js', (error, stdout, stderr) => {
                 if (error) {
                     console.error(`exec error: ${error}`);
                     return;
